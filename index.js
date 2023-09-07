@@ -19,6 +19,23 @@ const handleLoadNews =async (categoryId) => {
     `https://openapi.programming-hero.com/api/videos/category/${categoryId}`
   );
   const data=await response.json();
-  console.log(data.data);
+  
+  const cardContainer=document.getElementById("card-container");
+
+  data.data.forEach((news)=>{ 
+    console.log(news)
+    const div =document.createElement('div');
+    div.innerHTML=`
+    <div class="card bg-base-100 shadow-xl  glass">
+      <figure><img src=${news?.thumbnail} alt="car!"/></figure>
+      <div class="card-body">
+        ${news.title};
+        <h2 class="card-title">Awlad Hossen</h2>
+        <h4>91k views</h4>
+      </div>
+    </div>
+    `;
+    cardContainer.appendChild(div);
+  })
 };
 handleCategory();
