@@ -32,7 +32,8 @@
           <button class="btn btn-active btn-ghost">Sort By View</button>
         </div>
         <div class="navbar-end">
-          <a class="bg-red-600 btn">Blog</a>
+          <a id="openBlogBtn" class="bg-red-600 btn">Blog</a>
+          <div id="blogContainer"></div>
         </div>
       </div>
     </section>
@@ -68,6 +69,26 @@
 
   </footer>
   <script src="index.js"></script>
+   
+  <script>
+    // Function to load the second HTML file
+    function loadBlog() {
+        const blogContainer = document.getElementById('blogContainer');
+        
+        // Create a new iframe element
+        const iframe = document.createElement('iframe');
+        iframe.src = 'blog.html'; // Replace with the actual URL of your second HTML file
+        iframe.style.width = '100%';
+        iframe.style.height = '500px'; 
+        
+        // Clear the blogContainer and append the iframe
+        blogContainer.innerHTML = '';
+        blogContainer.appendChild(iframe);
+    }
+    
+    // Add a click event listener to the button
+    document.getElementById('openBlogBtn').addEventListener('click', loadBlog);
+</script>
 </body>
 
 </html>
