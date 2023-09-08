@@ -14,18 +14,18 @@ const handleCategory = async () => {
   console.log(data.data);
 };
 
-const handleLoadNews =async (categoryId) => {
-  const response=await fetch(
+const handleLoadNews = async (categoryId) => {
+  const response = await fetch(
     `https://openapi.programming-hero.com/api/videos/category/${categoryId}`
   );
-  const data=await response.json();
-  
-  const cardContainer=document.getElementById("card-container");
+  const data = await response.json();
 
-  data.data.forEach((news)=>{ 
-    console.log(news)
-    const div =document.createElement('div');
-    div.innerHTML=`
+  const cardContainer = document.getElementById("card-container");
+  cardContainer.innerHTML = "";
+  data.data.forEach((news) => {
+    console.log(news);
+    const div = document.createElement("div");
+    div.innerHTML = `
     <div class="card bg-base-100 shadow-xl  glass">
       <figure><img src=${news?.thumbnail} alt="car!"/></figure>
       <div class="card-body">
@@ -36,6 +36,7 @@ const handleLoadNews =async (categoryId) => {
     </div>
     `;
     cardContainer.appendChild(div);
-  })
+  });
 };
 handleCategory();
+handleLoadNews("1000");
